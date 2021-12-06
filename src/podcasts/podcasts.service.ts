@@ -9,6 +9,7 @@ import { promisify } from 'util';
 
 @Injectable()
 export class PodcastsService {
+  // Feed parser
   async getFeedEpisodes(
     feedUrl: string,
     checksumCount = 1,
@@ -22,6 +23,7 @@ export class PodcastsService {
 
     // Fetch RSS feed data & parse
     try {
+      // request
       const feedBuffer = await got.get(feedUrl).buffer();
 
       const { rss } = parser.parse(feedBuffer);
